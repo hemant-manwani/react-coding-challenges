@@ -1,5 +1,10 @@
 import React from 'react';
+import { DisplayPreferenceProvider } from '../components';
 
 export default function App({ children }) {
-  return children;
+  return (
+    <DisplayPreferenceProvider>
+      { children }
+    </DisplayPreferenceProvider>
+ ); 
 }
