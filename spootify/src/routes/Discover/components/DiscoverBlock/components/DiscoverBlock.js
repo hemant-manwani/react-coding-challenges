@@ -4,6 +4,8 @@ import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons
 import DiscoverItem from './DiscoverItem';
 import '../styles/_discover-block.scss';
 
+import { useSpotifyFetcher } from '../../../hooks';
+
 function scrollContainer(id, { isNegative } = {}) {
   return () => {
     const scrollableContainer = document.getElementById(id);
@@ -13,7 +15,9 @@ function scrollContainer(id, { isNegative } = {}) {
   };
 }
 
-export default function DiscoverBlock({ text, id, data, imagesKey = 'images' }) {
+export default function DiscoverBlock({ id, imagesKey, type, text }) {
+  const { fetching, data, error } = useSpotifyFetcher(type);
+  
   return (
     <div className="discover-block">
       <div className="discover-block__header">
@@ -34,6 +38,20 @@ export default function DiscoverBlock({ text, id, data, imagesKey = 'images' }) 
           ) : null
         }
       </div>
+      {
+        error ? (
+          <div className="discover-block__error">
+            { error?.message }
+          </div>
+        ) : null
+      }
+      {
+        fetching ? (
+          <div className="discover-block__loading">
+            Loading...
+          </div>
+        ) : null
+      }
       <div className="discover-block__row" id={id}>
         {data.map(({ [imagesKey]: images, name }) => (
           <DiscoverItem key={name} images={images} name={name} />

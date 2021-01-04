@@ -5,10 +5,8 @@ import CoreLayout from './common/layouts/CoreLayout';
 import './styles/_main.scss';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <CoreLayout>
-      <Routes />
-    </CoreLayout>
-  </React.StrictMode>,
+  <CoreLayout>
+    <Routes />
+  </CoreLayout>,
   document.getElementById('root')
 );

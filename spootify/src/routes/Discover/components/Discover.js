@@ -1,27 +1,46 @@
-import React, { Component } from 'react';
+import React from 'react';
 import DiscoverBlock from './DiscoverBlock/components/DiscoverBlock';
 import '../styles/_discover.scss';
 
-export default class Discover extends Component {
-  constructor() {
-    super();
+const listTypes = [
+  {
+    id: 'released',
+    imagesKey: 'images',
+    text: 'RELEASED THIS WEEK',
+    type: 'new-releases',
+  },
+  {
+    id: 'featured',
+    imagesKey: 'images',
+    text: 'FEATURED PLAYLISTS',
+    type: 'featured-playlists',
+  },
+  {
+    id: 'browse',
+    imagesKey: 'icons',
+    text: 'BROWSE',
+    type: 'categories',
+  },
+];
 
-    this.state = {
-      newReleases: [],
-      playlists: [],
-      categories: []
-    };
-  }
+const Discover = () => {
+  return (
+    <div className="discover">
+      {
+        listTypes.map(
+          ({ id, imagesKey, type, text}) => (
+            <DiscoverBlock
+              id={id}
+              imagesKey={imagesKey}
+              key={id}
+              type={type}
+              text={text}
+            />
+          )
+        )
+      }
+    </div>
+  )
+};
 
-  render() {
-    const { newReleases, playlists, categories } = this.state;
-
-    return (
-      <div className="discover">
-        <DiscoverBlock text="RELEASED THIS WEEK" id="released" data={newReleases} />
-        <DiscoverBlock text="FEATURED PLAYLISTS" id="featured" data={playlists} />
-        <DiscoverBlock text="BROWSE" id="browse" data={categories} imagesKey="icons" />
-      </div>
-    );
-  }
-}
+export default Discover;
