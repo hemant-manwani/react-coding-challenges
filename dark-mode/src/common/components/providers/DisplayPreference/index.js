@@ -32,7 +32,7 @@ const DisplayPreferenceProvider = ({ children }) => {
     // side effect 2 - update te root html class list
     const isDarkMode = storedDisplayMode === constants.DARK_DISPLAY_MODE;
     updateRootHTMLClassList(isDarkMode);
-  }, []);
+  }, [getItem]);
 
   // side effects - when user toggles dark mode state
   React.useEffect(() => {
@@ -42,7 +42,7 @@ const DisplayPreferenceProvider = ({ children }) => {
     // side effect 2 - get the stored value and assign to provider state.
     const mode = isDark ? constants.DARK_DISPLAY_MODE : constants.LIGHT_DISPLAY_MODE;
     setItem(constants.DISPLAY_MODE, mode);
-  }, [isDark]);
+  }, [isDark, setItem]);
 
   // define provider value to be consumed by any of the childrens.
   const providerValue = {

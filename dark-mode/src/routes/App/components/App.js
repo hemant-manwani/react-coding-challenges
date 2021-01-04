@@ -3,9 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 import '../styles/_app.scss';
 
-// constants
-import constants from '../../../constants';
-
 // hooks
 import { useDisplayPreference } from '../../../hooks';
 
@@ -54,8 +51,8 @@ function App() {
 
       <section className="section">
         <div className="buttons level-right">
-          <a className="button is-primary">Save</a>
-          <a className="button is-link">Submit</a>
+          <a className="button is-primary" href="#root">Save</a>
+          <a className="button is-link" href="#root">Submit</a>
         </div>
       </section>
     </div>
